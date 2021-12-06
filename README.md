@@ -4,9 +4,9 @@ Initial Challenge can be found here :
 
 Team Members: Barbara Cristina Nunes, Sushanta Pyakurel, Reinout De Bleser
 Team Member Github profiles: 
-[Barbara](https://github.com/BarbaraCristinaNunes)
-[Sushanta](https://github.com/mesushanta)
-[Reinout](https://github.com/RedMarkD/)
+- [Barbara](https://github.com/BarbaraCristinaNunes)
+- [Sushanta](https://github.com/mesushanta)
+- [Reinout](https://github.com/RedMarkD/)
 
 # Title: PHP - Create, Read, Update, Delete
 
