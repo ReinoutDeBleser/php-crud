@@ -34,21 +34,18 @@ In this assigment we will end up with at least 3 models and 3 controllers, but y
 Strategy is to create seperate MVC's for each class. Learn from each other this way by giving freedom to give it our best shot initially and working together to learn from each others experience. 
 The main challenge is to not have time-consuming merge conflicts and work together effectively with a team we've not previously worked with a lot. 
 
-
 ## Log/self-reflection
-Day 1: before lunch. 
+Day 1: before lunch. reflections
 Judging by Sushanta's experience the challenge seems very manageable and our goal is to reach all the must-haves by tomorrow around lunch and nice-to-haves by the end of the 3 days.  
-
-
+10h20: finished basic folder stucture. 
+Database building, 
 
 ## Task division 
 Day 1: 
-divide the crud in 3, Class, Student, Teacher. 
-
-
-
-
-
+divide the CRUD in 3:
+- Classroom: Reinout
+- Student:  Sushanta 
+- Teacher: Barbara 
 
 ## Must-have features
 We have to provide the following pages for Students, Teacher & Class.
@@ -68,18 +65,18 @@ On the general overview table you can yourself decide what would be useful infor
 
 On the detailed overview you have to provide the following information:
 
-#### Student
+#### Student : 
 - Name
 - Email
 - Class (with clickable link)
 - Assigned teacher (clickable link - relation via class)
 
-#### Teacher
+#### Teacher : 
 - Name
 - Email
 - List of all students currently assigned to him (clickable link)
  
-#### Class 
+#### Class : 
 - Name class (Giertz, Lamarr, ...)
 - Location (Antwerp, Gent, Genk, Brussels, Liege)
 - Assigned teacher (clickable link)
