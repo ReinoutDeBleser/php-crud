@@ -5,7 +5,7 @@ bin-release/
 [Bb]in/
 /.idea
 .env
-
+git
 # Other files and folders
 .settings/
 
