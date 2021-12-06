@@ -4,6 +4,8 @@ bin-release/
 [Oo]bj/
 [Bb]in/
 /.idea
+.DS_Store
+
 .env
 git
 # Other files and folders
