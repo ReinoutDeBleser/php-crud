@@ -49,10 +49,9 @@
 
         
         public function update($id, $firstName, $lastName, $email, $phone, $classroom){
-            $query = 'UPDATE teacher
-            SET firstName =' . $firstName. ', lastName =' . $lastName . ', email = ' . $email . ', phone = ' . $phone . ', 
-            classroom = ' . $classroom .
-            'WHERE id = '.$id;
+            $query = "UPDATE teacher
+            SET firstName ='$firstName', lastName ='$lastName', email = '$email ', phone = '$phone', classroom = '$classroom'
+            WHERE id = $id;";
 
             $update = Database::query($query);
         }
