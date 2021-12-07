@@ -2,7 +2,6 @@
 
 declare(strict_types = 1);
 
-require_once './class/Database.php';
 require_once './Model/Student.php';
 
 class StudentController
