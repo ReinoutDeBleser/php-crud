@@ -6,3 +6,5 @@
         <?php echo $student[0]['firstname']; ?>
     </div>
 </div>
+
+<?php require_once './View/includes/footer.php'; ?>
