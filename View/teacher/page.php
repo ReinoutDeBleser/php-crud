@@ -1,4 +1,5 @@
 <?php
+    require('../../Controller/teacher/TeacherController.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,18 @@
     <title>Document</title>
 </head>
 <body>
-    ola!
+    <form method="post">
+        <?php foreach ($teachers AS $i => $teacher): ?>
+            <?php echo $teacher['firstname'] ?>          
+
+            <input type="text" name="updateTeacher">
+            <button type="submit" name="update">Update</buttonn>
+            <button type="submit" name="delete">delete</button><br>
+        <?php endforeach; ?>
+        
+
+    </form>
+    
 </body>
 </html>
 
