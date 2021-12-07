@@ -1,7 +1,7 @@
 <?php
     declare(strict_types=1);
 
-    require ('../../class/Database.php');
+    require ('class/Database.php');
 
 // teacher = Teacher.show(1)
 
@@ -34,23 +34,16 @@
         }
 
         public function create($firstName, $lastName, $email, $phone, $classroom){
-            $query = "INSERT INTO teacher (firstName, lastName, email, phone, classroom)
+            $query = "INSERT INTO teacher (firstname, lastname, email, phone, classroom)
             VALUES ('$firstName', '$lastName', '$email', '$phone', '$classroom')";
 
             $insert = Database::query($query);
-            var_dump($insert);
-
-            if ($insert) {
-                echo "<p> Your registration is complete! </p><br>";
-            } else {
-                echo "<p> Unable to register, try again!</p>";
-            }
         }
 
         
-        public function update($id, $firstName, $lastName, $email, $phone, $classroom){
+        public function update($id, $firstname, $lastname, $email, $phone, $classroom){
             $query = "UPDATE teacher
-            SET firstName ='$firstName', lastName ='$lastName', email = '$email ', phone = '$phone', classroom = '$classroom'
+            SET firstname ='$firstname', lastname ='$lastname', email = '$email ', phone = '$phone', classroom = '$classroom'
             WHERE id = $id;";
 
             $update = Database::query($query);
