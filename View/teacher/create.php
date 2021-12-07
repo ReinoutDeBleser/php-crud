@@ -1,5 +1,5 @@
 <?php
-    require('../../Controller/teacher/app_create.php');
+    // require('../../Controller/teacher/CreateTeacherController.php');
     // require_once ('../View/includes/header.php');
 ?>
 
@@ -21,15 +21,15 @@
 
     <div class="max-w-screen-md mx-auto w-full my-12">
     <div class="w-full mx-4 px-6 py-6 border-gray-200 shadow-md">
-        <h1 class="text-2xl text-gray-700 font-light py-2 border-b-4 border-double border-gray-300">Add New Student</h1>
-        <form action="/student.php" method="post" class="my-8">
+        <h1 class="text-2xl text-gray-700 font-light py-2 border-b-4 border-double border-gray-300">Add New Teacher</h1>
+        <form method="post" class="my-8">
             <div class="my-4">
                 <label for="firstname" class="<?php if(isset($errors['firstname'])) { echo 'text-red-700'; } else { echo 'text-gray-700'; } ?> text-md font-bold">Firstname</label>
                 <input
                         type="text"
                         name="firstname"
                         class="w-full h-12 px-4 mt-2 mb-1 border outline:none focus:outline-none shadow-sm <?php if(isset($errors['email'])) { echo 'border-red-500 focus:border-red-000'; } else { echo 'border-gray-300 focus:border-blue-400'; } ?>"
-                        placeholder="Firstname of the student"
+                        placeholder="Firstname of the teacher"
                 >
                 <span class="font-sm text-red-500">
                     <?php if(isset($errors['firstname'])) { echo $errors['firstname']; } ?>
@@ -42,7 +42,7 @@
                         type="text"
                         name="lastname"
                         class="w-full h-12 px-4 mt-2 mb-1 border outline:none focus:outline-none shadow-sm <?php if(isset($errors['email'])) { echo 'border-red-500 focus:border-red-000'; } else { echo 'border-gray-300 focus:border-blue-400'; } ?>"
-                        placeholder="Lastname of the student"
+                        placeholder="Lastname of the teacher"
                 >
                 <span class="font-sm text-red-500">
                     <?php if(isset($errors['lastname'])) { echo $errors['lastname']; } ?>
@@ -55,7 +55,7 @@
                         type="text"
                         name="email"
                         class="w-full h-12 px-4 mt-2 mb-1 border outline:none focus:outline-none shadow-sm <?php if(isset($errors['email'])) { echo 'border-red-500 focus:border-red-000'; } else { echo 'border-gray-300 focus:border-blue-400'; } ?>"
-                        placeholder="Email Address of the student"
+                        placeholder="Email Address of the teacher"
                 >
                 <span class="font-sm text-red-500">
                     <?php if(isset($errors['email'])) { echo $errors['email']; } ?>
@@ -68,7 +68,7 @@
                         type="text"
                         name="phone"
                         class="w-full h-12 px-4 mt-2 mb-1 border border-gray-300 outline:none focus:outline-none focus:border-blue-400"
-                        placeholder="Phone number of the student"
+                        placeholder="Phone number of the teacher"
                 >
                 <span class="font-sm text-red-500">
                     <?php if(isset($errors['phone'])) { echo $errors['phone']; } ?>

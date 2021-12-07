@@ -1,6 +1,8 @@
 <php
-require "./Controler/teacher/TeacherController.php";
 
-$teacher = new TeacherController();
+declare(strict_types=1);
 
-$teacher->render($_GET, $_POST);
+require './Controller/Student/CreateTeacherController.php';
+
+$teacher = new CreateTeacherController();
+$teacher->render($_GET,$_POST);
