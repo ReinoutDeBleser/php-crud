@@ -1,5 +1,4 @@
 <?php
-    require('../../Controller/teacher/TeacherController.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +20,6 @@
         
 
     </form>
-    
 </body>
 </html>
 
