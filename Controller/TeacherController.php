@@ -8,6 +8,10 @@ class TeacherController
     public function render(array $GET, array $POST)
     {
 
+        if(isset($_GET['view']) && $_GET['view'] == 'create') {
+            require './View/teacher/create.php';
+        }
+
         // code to read all teachers
 
         $data = new Teacher();
