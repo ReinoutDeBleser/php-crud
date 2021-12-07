@@ -7,6 +7,7 @@
 
     class Teacher
     {
+        private $id;
         private $firstName;
         private $lastName;
         private $email;
@@ -27,30 +28,10 @@
         }
 
         public function readAllTeacher(){
-            $row = $row = Database::query('SELECT * FROM teacher');
-            $query = Database::query($row);
-
-            while ($query = Database::query($row)){
-                $teachers[] = array("id" => $id, "firstName" => $row['firstName'], "lastName" => $row['lastName'], "email" => $row['email'], 
-                "phone" => $row['phone'], "class" => $row['classroom']);
-
-            }
-            if(!isset($teachers)){
-                return null;
-        }else{
-                return $teachers;
+            $query = 'SELECT * FROM teacher';
+            $row = Database::query($query);
+            return $row;
         }
-        }
-
-        // public static function show($id) {
-        //     $row = Database::query('SELECT * FROM' . $this->table . 'WHERE id = '. $id);
-        //     return new Teacher($row['firstName'], )
-        // }
-
-        // public static function show($id) {
-        //     $rows = Database::query('SELECT * FROM' . $this->table);
-        //     return new Teacher($row['firstName'], )
-        // }
 
         public function create($firstName, $lastName, $email, $phone, $classroom){
             $query = "INSERT INTO teacher (firstName, lastName, email, phone, classroom)
@@ -74,24 +55,11 @@
             'WHERE id = '.$id;
 
             $update = Database::query($query);
-
-            if ($update) {
-                echo "<p> Your update is complete! </p><br>";
-            } else {
-                echo "<p> Unable to update, try again!</p>";
-            }
-
         }
 
         public function delete($id){
             $query = 'DELETE FROM teacher WHERE id =' . $id;
             $delete = Database::query($query);
-
-            if ($delete) {
-                echo "<p> It was deleted! </p><br>";
-            } else {
-                echo "<p> It is not working, try again!</p>";
-            }
         }
 
 
