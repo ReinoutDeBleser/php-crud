@@ -8,16 +8,17 @@ class TeacherController
     public function render(array $GET, array $POST)
     {
 
+        $data = new Teacher();
+
+        $teachers = $data->readAllTeacher();
+
         if(isset($_GET['view']) && $_GET['view'] == 'create') {
             require './View/teacher/create.php';
         }
 
-        // code to read all teachers
+        
 
-        $data = new Teacher();
-
-        $teachers = $data->readAllTeacher();
-        // var_dump($teachers);
+        
 
 
         if(isset($_POST['delete'])){
@@ -28,47 +29,45 @@ class TeacherController
             $data->update(12);
         }
 
-        require 'View/teacher/page.php';
+        require 'View/teacher/index.php';
 
         // code to create a teacher
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['create'])){
             $teacher = new Teacher();
             $check = true;
-            $firstname = $lastname = $email = $phone = $classroom = "";
-            $firstnameErr = $lastnameErr  = $emailErr  = $phoneErr  = $classroomErr  = "";
-            
+            $firstname = $lastname = $email = $phone = $classroom = "";            
     
             var_dump($firstname, $lastname, $email, $phone, $classroom);
     
-            if(empty($_POST['firstName'])){
-                $firstnameErr = "An name is required!";
+            if(empty($_POST['firstname'])){
+                $errors['firstname'] = "An name is required!";
                 $check = false;
             }else{
-                $firstname = $_POST['firstName'];
+                $firstname = $_POST['firstname'];
             }
-            if(empty($_POST['lastName'])){
-                $lastnameErr = "A last name is required!";
+            if(empty($_POST['lastname'])){
+                $errors['lastname'] = "A last name is required!";
                 $check = false;
             }else{
-                $lastname = $_POST['lastName'];
+                $lastname = $_POST['lastname'];
             }
             
             if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
-                $emailErr = "A valid email is required!";
+                $errors['email'] = "A valid email is required!";
             }else{
                 $email = $_POST["email"];
             }
     
             if(empty($_POST['phone'])){
-                $phoneErr = "A phone is required!";
+                $errors['phone'] = "A phone is required!";
                 $check = false;
             }else{
                 $phone = $_POST['phone'];
             }
     
             if(empty($_POST['classroom'])){
-                $classroomErr = "A classroom is required!";
+                $errors['classroom'] = "Which classroom doe this student belongs to?";
                 $check = false;
             }else{
                 $classroom = $_POST['classroom'];
