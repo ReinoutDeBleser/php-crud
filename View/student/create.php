@@ -1,6 +1,6 @@
 <?php
-    if(isset($_POST) && !empty($_POST['create'])) {
-       $student = new CreateStudentController();
+    if(isset($_POST) && !empty($_POST['update'])) {
+       $student = new StudentController();
        $firstname = $_POST['firstname'];
        $lastname = $_POST['lastname'];
        $email = $_POST['email'];
@@ -18,7 +18,7 @@
 <div class="max-w-screen-md mx-auto w-full my-12">
     <div class="w-full mx-4 px-6 py-6 border-gray-200 shadow-md">
         <h1 class="text-2xl text-gray-700 font-light py-2 border-b-4 border-double border-gray-300">Add New Student</h1>
-        <form action="/student.php" method="post" class="my-8">
+        <form action="" method="post" class="my-8">
             <div class="my-4">
                 <label for="firstname" class="<?php if(isset($errors['firstname'])) { echo 'text-red-700'; } else { echo 'text-gray-700'; } ?> text-md font-bold">Firstname</label>
                 <input
@@ -88,8 +88,8 @@
             <div class="my-6 text-right">
                 <input
                         type="submit"
-                        name="create"
-                        value="create"
+                        name="update"
+                        value="Update"
                         class="px-8 h-12 text-sm text-white bg-blue-500 hover:bg-blue-600 border-bg-500"
                 >
             </div>

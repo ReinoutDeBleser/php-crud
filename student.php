@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require './Controller/Student/CreateStudentController.php';
+require './Controller/StudentController.php';
 
-$student = new CreateStudentController();
+$student = new StudentController();
 $student->render($_GET,$_POST);
