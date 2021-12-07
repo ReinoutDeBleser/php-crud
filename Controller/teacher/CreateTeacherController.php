@@ -5,64 +5,66 @@
 
 // class CreateTeacherController
 // {
-    $firstName = $_POST['firstName'];
-    $lasttName = $_POST['lastName'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $classroom = $_POST['classroom'];
-    echo $firstName;
+    $teacher = new Teacher();
+
+    $check = true;
+    $firstName = $lastName = $email = $phone = $classroom = "";
+    $firstNameErr = $lastNameErr  = $emailErr  = $phoneErr  = $classroomErr  = "";
 
     echo $firstName;
-    $teacher = new Teacher();
+    
 
     // public function render(array $GET, array $POST)
     // {
-    //     // require './View/student/create.php';
+    //     // require '../../View/teacher/create.php';
     //     die("test");
     // }
     
-    if(isset($_POST['create'])){              
-        create($firstName, $lasttName, $email, $phone, $classroom);
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(empty($_POST['firstName'])){
+             $firstNameErr = "An name is required!";
+             $check = false;
+        }else{
+             $username = $_POST['firstName'];
+        }
+
+        if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+             $emailErr = "A valid email is required!";
+        }else{
+             $email = $_POST["email"];
+        }
+
+        if(empty($_POST['lastName'])){
+             $lastNameErr = "A last name is required!";
+             $check = false;
+        }else{
+             $password1 = $_POST['lastName'];
+        }
+
+        if(empty($_POST['phone'])){
+             $phoneErr = "A phone is required!";
+             $check = false;
+        }
+
+        if(empty($_POST['classroom'])){
+            $classroomErr = "A classroom is required!";
+            $check = false;
+        }
     }
 
-    $firstName = $lasttName = $email = $phone = $classroom = "";
-    $firstNameErr = $lasttNameErr = $emailErr = $phoneErr = $classroomErr = "";
-
-    function create($firstname,$lastname,$email,$phone,$classroom) {
-        $status = '';
-        $response = [];
-        if(!isset($firstname) || empty($firstname)) {
-            $firstNameErr = "First name is required";
-            $status = 'error';
-        }
-        if(!isset($lastname) || empty($lastname)) {
-            $errors['lastname'] = "Last name is required";
-            $status = 'error';
-        }
-        if(!isset($email) || empty($email)) {
-            $errors['email'] = "Email address is required";
-            $status = 'error';
-        }
-        if(!isset($phone) || empty($phone)) {
-            $errors['phone'] = "Phone number is required";
-            $status = 'error';
-        }
-        if(!isset($classroom) || empty($classroom)) {
-            $errors['classroom'] = "Which classroom does this teacher belongs to?";
-            $status = 'error';
-        }
-
-        if($status != 'error') {
-            $teacher->create($firstName, $lasttName, $email, $phone, $classroom);
-        }
-
-        else {
-          $response['status'] = 'error';
-          $response['errors'] = $errors;
-        }
-        return $response;
-
+    if($check == true && $firstName == $_POST['firstName'] && $lastName == $_POST['lastName'] && 
+        $email == $_POST["email"] && $phone == $_POST['phone'] && $classroom == $_POST['classroom']){
+            if(isset($_POST['submit'])){
+                saveData($firstName, $lastName, $email, $phone, $classroom);
+            }
+    }else{
+        echo "nao deu certo";
     }
+
+   function saveData(){
+    $teacher->create($firstName, $lastName, $email, $phone, $classroom);
+   }
 // }
 
     
