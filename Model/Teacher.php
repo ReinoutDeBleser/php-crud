@@ -8,8 +8,8 @@
     class Teacher
     {
         private $id;
-        private $firstName;
-        private $lastName;
+        private $firstname;
+        private $lastname;
         private $email;
         private $phone;
         private $studet;
@@ -20,8 +20,8 @@
 
         public function readOneTeacher($id){
             $row = Database::query('SELECT * FROM teacher' . 'WHERE id = '. $id);
-            $this->firstName = $row['firstName'];
-            $this->lastName = $row['lastName'];
+            $this->firstName = $row['firstname'];
+            $this->lastName = $row['lastname'];
             $this->email = $row['email'];
             $this->phone = $row['phone'];
             $this->classroom = $row['classroom'];
@@ -33,9 +33,9 @@
             return $row;
         }
 
-        public function create($firstName, $lastName, $email, $phone, $classroom){
+        public function create($firstname, $lastname, $email, $phone, $classroom){
             $query = "INSERT INTO teacher (firstname, lastname, email, phone, classroom)
-            VALUES ('$firstName', '$lastName', '$email', '$phone', '$classroom')";
+            VALUES ('$firstname', '$lastname', '$email', '$phone', '$classroom')";
 
             $insert = Database::query($query);
         }
