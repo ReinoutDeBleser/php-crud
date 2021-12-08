@@ -32,17 +32,17 @@
             return $row;
         }
 
-        public function create($firstname, $lastname, $email, $phone, $classroom){
-            $query = "INSERT INTO teacher (firstname, lastname, email, phone, classroom)
-            VALUES ('$firstname', '$lastname', '$email', '$phone', '$classroom')";
+        public function create($firstname, $lastname, $email, $phone){
+            $query = "INSERT INTO teacher (firstname, lastname, email, phone)
+            VALUES ('$firstname', '$lastname', '$email', '$phone')";
 
             $insert = Database::query($query);
         }
 
         
-        public function update($id, $firstname, $lastname, $email, $phone, $classroom){
+        public function update($id, $firstname, $lastname, $email, $phone){
             $query = "UPDATE teacher
-            SET firstname ='$firstname', lastname ='$lastname', email = '$email ', phone = '$phone', classroom = '$classroom'
+            SET firstname ='$firstname', lastname ='$lastname', email = '$email ', phone = '$phone'
             WHERE id = $id;";
 
             $update = Database::query($query);
