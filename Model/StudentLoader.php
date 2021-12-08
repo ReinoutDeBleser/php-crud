@@ -21,6 +21,6 @@ class StudentLoader
 
 
     public function  getStudentByClassroom($classroom_id){
-        return Database::query('SELECT * FROM ' . $this->table . ' WHERE classroom_id = ' . $classroom_id);
+        return Database::query('SELECT * FROM student WHERE classroom_id = ' . $classroom_id);
     }
 }
