@@ -4,6 +4,7 @@ require_once ('EnvLoader.php');
 
 class Database
 {
+    //con -> connection
     private static function con() {
         $env = new EnvLoader();
         $env->load();
@@ -16,7 +17,8 @@ class Database
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     }
-
+//simplification of querying:
+//Tested by Sushanta before and copy pasted from previous projects.
     public static function query($query, $params = array()) {
         $stmt = self::con()->prepare($query);
         $stmt->execute($params);

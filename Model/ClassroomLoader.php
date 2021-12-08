@@ -1,6 +1,7 @@
 <?php
 
 require_once './class/Database.php';
+require_once './Model/ClassroomLoader.php';
 
 class ClassroomLoader
 {
