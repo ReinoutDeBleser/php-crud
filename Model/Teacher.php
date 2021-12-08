@@ -19,19 +19,6 @@
         public function __construct(){
         }
 
-        public function readOneTeacher($id){
-
-                $row = Database::query('SELECT * FROM teacher WHERE id = '. $id);
-                return $row;
-            
-        }
-
-        public function readAllTeacher(){
-            $query = 'SELECT * FROM teacher';
-            $row = Database::query($query);
-            return $row;
-        }
-
         public function create($firstname, $lastname, $email, $phone){
             $query = "INSERT INTO teacher (firstname, lastname, email, phone)
             VALUES ('$firstname', '$lastname', '$email', '$phone')";
@@ -53,16 +40,5 @@
             $query = 'DELETE FROM teacher WHERE id =' . $id;
             $delete = Database::query($query);
         }
-
-        public function getStudentsByTeacher($id){
-            $row = Database::query('SELECT * FROM teacher' . 'WHERE id = '. $id);
-            $classroom_id = $row[0]['classroom_id'];
-
-            $student = new Student();
-            return $student->getStudentByClassroom($classroom_id);
-        }
-
-
-
 
     }
