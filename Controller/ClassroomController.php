@@ -120,7 +120,7 @@ class ClassroomController
 
     public function deleteClassroom($id) {
         $classroom = new Classroom($id);
-        return $classroom->delete();
+        $classroom->delete();
     }
 
     public function allClassroom() {

@@ -5,7 +5,7 @@ class TeacherLoader
 
     public function readOneTeacher($id){
 
-        $row = Database::query('SELECT * FROM teacher WHERE id = '. $id);
+        $row = Database::query("SELECT * FROM teacher WHERE id=$id");
         return $row;
     
     }

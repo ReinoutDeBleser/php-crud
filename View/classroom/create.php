@@ -3,7 +3,7 @@ if(isset($_POST) && !empty($_POST['create'])) {
     $classroom = new ClassroomController();
     $classname = $_POST['name'];
     $location = $_POST['location'];
-    $teacher = $_POST['teacher'];
+    $teacher = $_POST['teacher_id'];
     $data = $classroom->createClassroom($classname, $location, $teacher);
     if(isset($data['status']) && $data['status'] == 'error') {
         $errors = $data['errors'];
@@ -50,9 +50,9 @@ if(isset($_POST) && !empty($_POST['create'])) {
             </div>
 
             <div class="my-y">
-                <label for="teacher" class="<?php if(isset($errors['teacher'])) { echo 'text-red-700'; } else { echo 'text-gray-700'; } ?> text-md font-bold">Teacher</label>
+                <label for="teacher" class="<?php if(isset($errors['teacher_id'])) { echo 'text-red-700'; } else { echo 'text-gray-700'; } ?> text-md font-bold">Teacher</label>
                 <select
-                        name="teacher"
+                        name="teacher_id"
                         class="w-full h-12 px-4 mt-2 mb-1 border border-gray-300 outline:none focus:outline-none focus:border-blue-400"
                 >
                     <option value="">Select teacher</option>

@@ -20,7 +20,7 @@ class Classroom
                 $this->id= $id;
                 $this->classname = $row[0]['name'];
                 $this->location = $row[0]['location'];
-                $this->teacher = $row[0]['teacher'];
+                $this->teacher = $row[0]['teacher_id'];
             }
         }
     }
@@ -41,6 +41,5 @@ class Classroom
     public function delete() {
         $query = "DELETE FROM classroom WHERE id = $this->id";
         $delete = Database::query($query);
-        return 'success';
     }
 }
