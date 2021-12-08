@@ -1,6 +1,6 @@
 <?php
 
-require_once 'EnvLoader.php';
+require_once ('EnvLoader.php');
 
 class Database
 {
@@ -25,5 +25,4 @@ class Database
         $data = $stmt->fetchAll();
         return $data;
     }
-
 }

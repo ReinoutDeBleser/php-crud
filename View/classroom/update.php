@@ -1,11 +1,11 @@
 <?php
-if(isset($_POST) && !empty($_POST['create'])) {
-    $student = new ClassroomController();
+if(isset($_POST) && !empty($_POST['update'])) {
+    $classroom = new ClassroomController();
     $id = intval($_GET['id']);
-    $name = $_POST['firstname'];
+    $classname = $_POST['classname'];
     $location = $_POST['location'];
     $teacher = $_POST['teacher'];
-    $data = $classroom->updateClassroom($id,$name,$location);
+    $data = $classroom-> updateClassroom($id, $classname, $location, $teacher);
     if(isset($data['status']) && $data['status'] == 'error') {
         $errors = $data['errors'];
     }
@@ -38,7 +38,6 @@ if(isset($_POST) && !empty($_POST['create'])) {
                         name="location"
                         class="w-full h-12 px-4 mt-2 mb-1 border border-gray-300 outline:none focus:outline-none focus:border-blue-400"
                 >
-                    <option value="value="<?php echo $classroom[0]['location'] ?>"><?php echo $classroom[0]['location'] ?></option>
                     <option value="Antwerp">Antwerp</option>
                     <option value="Ghent">Ghent</option>
                     <option value="Charleroi">Charleroi</option>
@@ -57,7 +56,6 @@ if(isset($_POST) && !empty($_POST['create'])) {
                         name="teacher"
                         class="w-full h-12 px-4 mt-2 mb-1 border border-gray-300 outline:none focus:outline-none focus:border-blue-400"
                 >
-                    <option value="value="<?php echo $classroom[0]['teacher'] ?>"><?php echo $classroom[0]['teacher'] ?></option>
                     <option value="1">Tim</option>
                     <option value="2">Sicco</option>
                     <option value="3">Charleroi</option>

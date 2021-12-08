@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 require_once './class/Database.php';
 require_once 'Model/Classroom.php';
+require_once 'Model/ClassroomLoader.php';
 
 class ClassroomController
 {
@@ -65,27 +66,10 @@ class ClassroomController
 // a classroom can NEVER be created without a teacher though.
     public function createClassroom($classname, $location, $teacher)
     {
-        $varrays = ["$classname", "$location", "$teacher"];
-        $this->errorChecker($varrays, $classname, $location,$teacher);
-    }
-
-
-// updating the classroom
-    public function updateClassroom($classname, $location, $teacher) {
-        $varrays = ["$classname", "$location", "$teacher"];
-        $this->errorChecker($varrays, $classname, $location, $teacher);
-    }
-
-//basic errorchecker: contains values otherwise, error
-    public function errorChecker($varrays, $classname, $location,$teacher) {
         $status = '';
         $response = [];
-        foreach ($varrays as $varray) {
-            if(!isset($varray) || empty($varray)) {
-                $errors['"'.$varray.'"'] = $varray." required";
-                $status = 'error';
-            }
-        }
+        $varrays = ["$classname", "$location", "$teacher"];
+        $this->errorChecker($varrays);
         if($status != 'error') {
             $classroom = new Classroom();
             $classroom->create($classname, $location, $teacher);
@@ -98,9 +82,37 @@ class ClassroomController
         return $response;
     }
 
+
+ //updating the classroom
+    public function updateClassroom($id, $classname, $location, $teacher) {
+        $status = '';
+        $response = [];
+        $varrays = ["$classname", "$location", "$teacher"];
+        $this->errorChecker($varrays);
+        if ($status != 'error'){
+            $classroom = new Classroom();
+            $classroom->update($id, $classname, $location, $teacher);
+            $response['status'] ='success';
+        }
+        else {
+            $response['status'] = $status;
+            $response['errors'] = $errors;
+        }
+    }
+
+//basic errorchecker: contains values otherwise, error
+    public function errorChecker($varrays) {
+        foreach ($varrays as $varray) {
+            if(!isset($varray) || empty($varray)) {
+                $errors['"'.$varray.'"'] = $varray." required";
+                $status = 'error';
+            }
+        }
+    }
+
     public function singleClassroom($id) {
-        $classroom = new Classroom($id);
-        return $classroom->getClassroom();
+        $classroom = new ClassroomLoader();
+        return $classroom->getClassroom($id);
     }
 
     public function deleteClassroom($id) {
@@ -109,7 +121,7 @@ class ClassroomController
     }
 
     public function allClassroom() {
-        $classroom = new Classroom();
+        $classroom = new ClassroomLoader();
         return $classroom->getAllClassroom();
     }
 }

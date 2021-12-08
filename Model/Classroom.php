@@ -43,16 +43,4 @@ class Classroom
         $delete = Database::query($query);
         return 'success';
     }
-    public function getAllClassroom() {
-        $classrooms = Database::query("SELECT * FROM classroom");
-        return $classrooms;
-    }
-    public function getClassroom() {
-        $classrooms = [];
-        if($this->id) {
-            $classrooms = Database::query("SELECT * FROM classroom WHERE id=$this->id");
-        }
-        return $classrooms;
-    }
-
 }
