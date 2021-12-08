@@ -6,8 +6,8 @@ if(isset($_POST) && !empty($_POST['update'])) {
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $classroom = intval($_POST['classroom']);
-    $data = $student->updateStudent($id,$firstname,$lastname,$email,$phone,$classroom);
+    $classroom_id = intval($_POST['classroom_id']);
+    $data = $student->updateStudent($id,$firstname,$lastname,$email,$phone,$classroom_id);
     if(isset($data['status']) && $data['status'] == 'error') {
         $errors = $data['errors'];
     }
@@ -77,16 +77,18 @@ if(isset($_POST) && !empty($_POST['update'])) {
             </div>
 
             <div class="my-5">
-                <label for="classroom" class="<?php if(isset($errors['classroom'])) { echo 'text-red-700'; } else { echo 'text-gray-700'; } ?> text-sm font-bold">Classroom</label>
+                <label for="classroom_id" class="<?php if(isset($errors['classroom_id'])) { echo 'text-red-700'; } else { echo 'text-gray-700'; } ?> text-sm font-bold">Classroom</label>
                 <select
-                        name="classroom"
+                        name="classroom_id"
                         class="w-full h-12 px-4 mt-2 mb-1 border border-gray-300 text-gray-500 outline:none focus:outline-none focus:border-blue-400"
                 >
                     <option value="">Choose one</option>
-                    <option value="2">Lamarr 4.13</option>
+                    <?php foreach($classroom->getAllClassroom() as $room): ?>
+                        <option value="<?php echo $room['id']; ?>" <?php if(isset($classroom_id) && $classroom_id == $room['id']) { echo 'selected'; } else if($student[0]['classroom_id'] == $room['id']) { echo "selected"; } ?>><?php echo $room['name']; ?></option>
+                    <?php endforeach; ?>
                 </select>
                 <span class="font-sm text-red-500">
-                    <?php if(isset($errors['classroom'])) { echo $errors['classroom']; } ?>
+                    <?php if(isset($errors['classroom_id'])) { echo $errors['classroom_id']; } ?>
                 </span>
             </div>
 

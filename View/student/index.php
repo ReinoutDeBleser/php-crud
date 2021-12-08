@@ -46,7 +46,7 @@ Class
                   </div>
                   <div class="ml-4">
                     <div class="text-sm font-medium text-gray-900">
-                        <?php echo $student['id']; ?>: <?php echo $student['firstname']; ?> <?php echo $student['lastname']; ?>
+                        <?php echo $student['firstname']; ?> <?php echo $student['lastname']; ?>
                     </div>
                     <div class="text-sm text-gray-500">
     </div>
@@ -63,7 +63,7 @@ Class
                 </td>
               <td class="px-6 py-4 whitespace-nowrap">
                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    <?php echo $student['classroom']; ?></div>
+                    <?php echo $student['classroom']['name']; ?></div>
                 </span>
               </td>
 
