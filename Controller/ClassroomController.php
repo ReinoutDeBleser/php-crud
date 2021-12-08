@@ -7,7 +7,7 @@ require_once 'Model/Classroom.php';
 
 class ClassroomController
 {
-    //
+    // Rendering a view means showing up a View eg html part to user or browser. in the function it contains the logic with view to show to user.
     public function render(array $GET, array $POST)
     {
         //
@@ -55,7 +55,7 @@ class ClassroomController
                 }
             }
         } else if (!isset($_GET['view']) || $_GET['view'] == 'all') {
-            $classroom = $this->allClassroom();
+            $classrooms = $this->allClassroom();
             require './View/classroom/index.php';
         } else {
             require './View/errors/404.php';
@@ -65,26 +65,24 @@ class ClassroomController
 // a classroom can NEVER be created without a teacher though.
     public function createClassroom($classname, $location, $teacher)
     {
-        $status = '';
-        $response = [];
-        $varrays = ["$classname", "$location", $teacher];
-        $this->errorChecker($varrays);
+        $varrays = ["$classname", "$location", "$teacher"];
+        $this->errorChecker($varrays, $classname, $location,$teacher);
     }
 
 
 // updating the classroom
     public function updateClassroom($classname, $location, $teacher) {
-        $status = '';
-        $response = [];
-        $varrays = ["$classname", "$location", $teacher];
-        $this->errorChecker($varrays);
+        $varrays = ["$classname", "$location", "$teacher"];
+        $this->errorChecker($varrays, $classname, $location, $teacher);
     }
 
 //basic errorchecker: contains values otherwise, error
-    public function errorChecker($varrays) {
+    public function errorChecker($varrays, $classname, $location,$teacher) {
+        $status = '';
+        $response = [];
         foreach ($varrays as $varray) {
             if(!isset($varray) || empty($varray)) {
-                $errors['"'.$varray.'"'] = "$varray  required";
+                $errors['"'.$varray.'"'] = $varray." required";
                 $status = 'error';
             }
         }

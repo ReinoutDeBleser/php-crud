@@ -36,7 +36,6 @@
                                 </div>
                                 <div class="ml-4">
                                     <div class="text-sm font-medium text-gray-900">
-                                        <?php echo $classroom['id']; ?>:
                                         <?php echo $classroom['name']; ?>
                                         <?php echo $classroom['location']; ?>
                                     </div>
@@ -46,28 +45,27 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900"><?php echo $classroom['teacher']; ?></div>
+                            <div class="text-sm text-gray-900"> <?php echo $classroom['location']; ?></div>
                             <!--                <div class="text-sm text-gray-500">Optimization</div>-->
 
                         <td class="px-6 py-4 whitespace-nowrap">
                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                <?php echo $classroom['classroom']; ?></div>
+                <?php echo $classroom['teacher']; ?></div>
             </span>
             </td>
 <!-- create -->
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="student.php?view=update&id=<?php echo $classroom['id']; ?>">
+                <a href="classroom.php?view=update&id=<?php echo $classroom['id']; ?>">
                     <button class="h-8 text-xm px-3 mx-2 inline-block bg-red-500 text-white">
                         Update
                     </button>
                 </a>
-
-                <a href="student.php?view=student&id=<?php echo $classroom['id']; ?>">
+                <a href="classroom.php?view=classroom&id=<?php echo $classroom['id']; ?>">
                     <button class="h-8 text-xm px-3 mx-2 inline-block bg-red-500 text-white">
                         View
                     </button>
                 </a>
-                <a href="student.php?view=delete&id=<?php echo $classroom['id']; ?>">
+                <a href="classroom.php?view=delete&id=<?php echo $classroom['id']; ?>">
                     <button class="h-8 text-xm px-3 mx-2 inline-block bg-red-500 text-white">
                         Delete
                     </button>

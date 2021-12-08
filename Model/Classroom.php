@@ -9,7 +9,7 @@ class Classroom
     private $id;
     private $classname;
     private $location;
-    private $teacherId;
+    private $teacher;
 
     public function __construct($id = null)
     {
@@ -20,6 +20,7 @@ class Classroom
                 $this->id= $id;
                 $this->classname = $row[0]['name'];
                 $this->location = $row[0]['location'];
+                $this->teacher = $row[0]['teacher'];
             }
         }
     }
@@ -43,8 +44,8 @@ class Classroom
         return 'success';
     }
     public function getAllClassroom() {
-        $classroom = Database::query("SELECT * FROM classroom");
-        return $classroom;
+        $classrooms = Database::query("SELECT * FROM classroom");
+        return $classrooms;
     }
     public function getClassroom() {
         $classrooms = [];
