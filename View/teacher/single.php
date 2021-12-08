@@ -99,7 +99,7 @@ Class
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
 
-          <?php foreach($student->getAllStudent() as $student): ?>
+          <?php foreach($student->getStudentByClassroom($_GET['id']) as $student): ?>
 
             <tr>
               <td class="px-6 py-4 whitespace-nowrap">
