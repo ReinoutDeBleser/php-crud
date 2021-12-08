@@ -6,7 +6,7 @@
        $email = $_POST['email'];
        $phone = $_POST['phone'];
        $classroom = intval($_POST['classroom']);
-       $data = $student->create($firstname,$lastname,$email,$phone,$classroom);
+       $data = $student->createStudent($firstname,$lastname,$email,$phone,$classroom);
         if(isset($data['status']) && $data['status'] == 'error') {
             $errors = $data['errors'];
         }
