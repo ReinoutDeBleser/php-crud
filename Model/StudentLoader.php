@@ -9,7 +9,6 @@ class StudentLoader
         $students = Database::query("SELECT * FROM student");
 
         foreach($students as $key => $student) {
-
             $classroom = new ClassroomLoader();
             $room = $classroom->getClassroom($student['classroom_id']);
             $students[$key]['classroom'] = $room[0];
