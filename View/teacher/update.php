@@ -72,20 +72,6 @@
                 </span>
             </div>
 
-            <div class="my-3">
-                <label for="classroom" class="<?php if(isset($errors['classroom'])) { echo 'text-red-700'; } else { echo 'text-gray-700'; } ?> text-md font-bold">Classroom</label>
-                <select
-                        name="classroom"
-                        class="w-full h-12 px-4 mt-2 mb-1 border border-gray-300 outline:none focus:outline-none focus:border-blue-400"
-                >
-                    <option value="">Choose one</option>
-                    <option value="2">Lamarr 4.13</option>
-                </select>
-                <span class="font-sm text-red-500">
-                    <?php if(isset($errors['classroom'])) { echo $errors['classroom']; } ?>
-                </span>
-            </div>
-
             <div class="my-6 text-right">
                 <input
                         type="submit"
