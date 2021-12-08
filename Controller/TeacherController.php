@@ -8,10 +8,9 @@ class TeacherController
 
     public function render(array $GET, array $POST)
     {
-              
-        if(isset($_GET['view']) && $_GET['view'] == 'create') {
-            $model = new Teacher();
-            $teachers = $model->readAllTeacher();
+        $model = new Teacher();
+        $teachers = $model->readAllTeacher();
+        if(isset($_GET['view']) && $_GET['view'] == 'create') {            
             require './View/teacher/create.php';
         }
 
@@ -22,12 +21,27 @@ class TeacherController
             else {               
                 $model = new Teacher();
                 $oneTeacher = $model->readOneTeacher($_GET['id']);
-                var_dump($oneTeacher);
                 if(count($oneTeacher) == 0) {
                     require './View/errors/404.php';
                 }
                 else {
                     require './View/teacher/update.php';
+                }
+            }
+        }
+
+        else if(isset($_GET['view']) && $_GET['view'] == 'teacher') {
+            if(!isset($_GET['id'])) {
+                require './View/errors/404.php';
+            }
+            else {               
+                $model = new Teacher();
+                $oneTeacher = $model->readOneTeacher($_GET['id']);
+                if(count($oneTeacher) == 0) {
+                    require './View/errors/404.php';
+                }
+                else {
+                    require './View/teacher/single.php';
                 }
             }
         }
@@ -56,8 +70,7 @@ class TeacherController
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
-            $classroom = $_POST['classroom']; 
-                    
+
             if(empty($_POST['firstname'])){
                 $errors['firstname'] = "An name is required!";
                 $check = false;
@@ -76,13 +89,8 @@ class TeacherController
                 $check = false;
             }
     
-            if(empty($_POST['classroom'])){
-                $errors['classroom'] = "Which classroom doe this student belongs to?";
-                $check = false;
-            }
-    
             if($check === true){
-                $teacher->create($firstname, $lastname, $email, $phone, $classroom);
+                $teacher->create($firstname, $lastname, $email, $phone);
                 $response['status'] = 'success';
 
             }else{
@@ -95,7 +103,7 @@ class TeacherController
 
     public function updateTeacher(){
         $teacher = new Teacher();
-        
+
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $check = true;
@@ -105,7 +113,6 @@ class TeacherController
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
-            $classroom = intval($_POST['classroom']);
 
             if(empty($_POST['firstname'])){
                 $errors['firstname'] = "An name is required!";
@@ -125,13 +132,8 @@ class TeacherController
                 $check = false;
             }
     
-            if(empty($_POST['classroom'])){
-                $errors['classroom'] = "Which classroom doe this student belongs to?";
-                $check = false;
-            }
-    
             if($check === true){
-                $teacher->update($id, $firstname, $lastname, $email, $phone, $classroom);
+                $teacher->update($id, $firstname, $lastname, $email, $phone);
                 $response['status'] = 'success';
 
             }else{
