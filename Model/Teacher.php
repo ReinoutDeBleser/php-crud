@@ -2,6 +2,7 @@
     declare(strict_types=1);
 
     require ('class/Database.php');
+    require ('Student.php');
 
 // teacher = Teacher.show(1)
 
@@ -52,6 +53,14 @@
         public function delete($id){
             $query = 'DELETE FROM teacher WHERE id =' . $id;
             $delete = Database::query($query);
+        }
+
+        public function getStudentsByTeacher($id){
+            $row = Database::query('SELECT * FROM teacher' . 'WHERE id = '. $id);
+            $classroom_id = $row[0]['classroom_id'];
+
+            $student = new Student();
+            return $student->getStudentByClassroom($classroom_id);
         }
 
 
