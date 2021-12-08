@@ -26,14 +26,14 @@ class Classroom
     }
 
     public function create($classname, $location, $teacher) {
-        $query = "INSERT INTO classroom (name, location, teacher)
+        $query = "INSERT INTO classroom (name, location, teacher_id)
                     VALUES ('$classname', '$location', '$teacher')";
         $create = Database::query($query);
         return 'success';
     }
     //id needed to update a specifically assigned classroom
     public function update($id, $classname, $location, $teacher){
-        $query = "UPDATE classroom SET name = '$classname', location = '$location', teacher = '$teacher' WHERE id = '$id';";
+        $query = "UPDATE classroom SET name = '$classname', location = '$location', teacher_id = '$teacher' WHERE id = '$id';";
         $update = Database::query($query);
         return 'success';
     }

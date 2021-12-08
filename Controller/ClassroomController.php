@@ -5,6 +5,7 @@ declare(strict_types = 1);
 require_once './class/Database.php';
 require_once 'Model/Classroom.php';
 require_once 'Model/ClassroomLoader.php';
+require_once 'Model/TeacherLoader.php';
 
 class ClassroomController
 {
@@ -13,6 +14,8 @@ class ClassroomController
     {
         //
         if (isset($_GET['view']) && $_GET['view'] == 'create') {
+            $teachers = new TeacherLoader();
+            $allTeachers = $teachers->readAllTeacher();
             require './View/classroom/create.php';
         }
         //
