@@ -20,12 +20,10 @@
         }
 
         public function readOneTeacher($id){
-            $row = Database::query('SELECT * FROM teacher' . 'WHERE id = '. $id);
-            $this->firstName = $row['firstname'];
-            $this->lastName = $row['lastname'];
-            $this->email = $row['email'];
-            $this->phone = $row['phone'];
-            $this->classroom = $row['classroom'];
+
+                $row = Database::query('SELECT * FROM teacher WHERE id = '. $id);
+                return $row;
+            
         }
 
         public function readAllTeacher(){
@@ -48,6 +46,7 @@
             WHERE id = $id;";
 
             $update = Database::query($query);
+            return 'success';
         }
 
         public function delete($id){
