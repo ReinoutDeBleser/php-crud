@@ -58,9 +58,9 @@ if(isset($_POST) && !empty($_POST['create'])) {
                     <option value="">Select teacher</option>
                     <option value="1">Tim</option>
                     <option value="2">Sicco</option>
-                    <option value="3">Charleroi</option>
-                    <option value="4">Brussels</option>
-                    <option value="5">Namur</option>
+                    <option value="3">Alber</option>
+                    <option value="4">Mo</option>
+                    <option value="5">Nick</option>
                 </select>
                 <span class="font-sm text-red-500">
                     <?php if(isset($errors['teacher'])) { echo $errors['teacher']; } ?>
