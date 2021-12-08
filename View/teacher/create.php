@@ -1,5 +1,14 @@
 <?php
     require './View/includes/header.php';
+    
+    if(isset($_POST) && !empty($_POST['create'])){
+        $teacher = new TeacherController();
+        $data = $teacher->createTeacher();
+        if(isset($data['status']) && $data['status'] == 'error') {
+            $errors = $data['errors'];
+        }
+    }
+    
 ?>
 
 
