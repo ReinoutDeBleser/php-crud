@@ -1,15 +1,15 @@
 <?php
 
-declare(strict_types = 1);
-
-require_once './class/Database.php';
 require_once './Model/Student.php';
+require_once './Model/StudentLoader.php';
+require_once './Model/ClassroomLoader.php';
 
 class StudentController
 {
     public function render(array $GET, array $POST)
     {
         if(isset($_GET['view']) && $_GET['view'] == 'create') {
+            $classroom = new ClassroomLoader();
             require './View/student/create.php';
         }
 
@@ -19,11 +19,13 @@ class StudentController
             }
             else {
                 $student = $this->singleStudent($_GET['id']);
-
+                $classroom = new ClassroomLoader();
                 if(count($student) == 0) {
                     require './View/errors/404.php';
                 }
                 else {
+                    $room = new ClassroomLoader();
+                    $classrooms = $room->getAllClassroom();
                     require './View/student/update.php';
                 }
             }
@@ -71,7 +73,7 @@ class StudentController
         }
     }
 
-    public function createStudent($firstname,$lastname,$email,$phone,$classroom) {
+    public function createStudent($firstname,$lastname,$email,$phone,$classroom_id) {
         $status = '';
         $response = [];
         if(!isset($firstname) || empty($firstname)) {
@@ -90,14 +92,14 @@ class StudentController
             $errors['phone'] = "Phone number is required";
             $status = 'error';
         }
-        if(!isset($classroom) || empty($classroom)) {
-            $errors['classroom'] = "Which classroom doe this student belongs to?";
+        if(!isset($classroom_id) || empty($classroom_id)) {
+            $errors['classroom_id'] = "Which classroom doe this student belongs to?";
             $status = 'error';
         }
 
         if($status != 'error') {
             $student = new Student();
-            $student->create($firstname,$lastname,$email,$phone,$classroom);
+            $student->create($firstname,$lastname,$email,$phone,$classroom_id);
             $response['status'] = 'success';
         }
 
@@ -109,7 +111,7 @@ class StudentController
 
     }
 
-    public function updateStudent($id,$firstname,$lastname,$email,$phone,$classroom) {
+    public function updateStudent($id,$firstname,$lastname,$email,$phone,$classroom_id) {
         $status = '';
         $response = [];
         if(!isset($firstname) || empty($firstname)) {
@@ -128,14 +130,14 @@ class StudentController
             $errors['phone'] = "Phone number is required";
             $status = 'error';
         }
-        if(!isset($classroom) || empty($classroom)) {
-            $errors['classroom'] = "Which classroom doe this student belongs to?";
+        if(!isset($classroom_id) || empty($classroom_id)) {
+            $errors['classroom_id'] = "Which classroom doe this student belongs to?";
             $status = 'error';
         }
 
         if($status != 'error') {
             $student = new Student();
-            $student->update($id,$firstname,$lastname,$email,$phone,$classroom);
+            $student->update($id,$firstname,$lastname,$email,$phone,$classroom_id);
             $response['status'] = 'success';
         }
 
@@ -149,8 +151,8 @@ class StudentController
 
 
     public function singleStudent($id) {
-        $student = new Student($id);
-        return $student->getStudent();
+        $student = new StudentLoader();
+        return $student->getStudent($id);
     }
 
     public function deleteStudent($id) {
@@ -159,7 +161,7 @@ class StudentController
     }
 
     public function allStudent() {
-        $student = new Student();
+        $student = new StudentLoader();
         return $student->getAllStudent();
     }
 }
