@@ -46,14 +46,23 @@ class TeacherController
             }
         }
 
+        else if(isset($_GET['view']) && $_GET['view'] == 'delete') {
+            if(!isset($_GET['id'])) {
+                require './View/errors/404.php';
+            }
+            else {
+                $model = new Teacher();
+                $oneTeacher = $model->readOneTeacher($_GET['id']);                
+                if(count($oneTeacher) == 0) {
+                    require './View/errors/404.php';
+                }
+                else {
+                    $this->deleteTeacher($_GET['id']);
+                    header('Location: teacher.php');
+                }
+            }
+        }
 
-        // if(isset($_POST['delete'])){
-        //     $data->delete(9);
-        // }
-
-        // if(isset($_POST['update'])){
-        //     $data->update(12);
-        // }
 
         require 'View/teacher/index.php';
 
@@ -143,6 +152,11 @@ class TeacherController
                 return $response;
                 var_dump("ola");
         }
+    }
+
+    public function deleteTeacher($id){
+        $teacher = new Teacher();
+        return $teacher->delete($id);
     }
 }
     
