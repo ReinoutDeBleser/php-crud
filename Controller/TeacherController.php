@@ -1,15 +1,14 @@
 <?php
     declare(strict_types=1);
     require ("Model/Teacher.php");
-
+    require ("Model/TeacherLoader.php");
+    require ("Model/StudentLoader.php");
 
 class TeacherController
 {
 
     public function render(array $GET, array $POST)
     {
-        $model = new Teacher();
-        $teachers = $model->readAllTeacher();
         if(isset($_GET['view']) && $_GET['view'] == 'create') {            
             require './View/teacher/create.php';
         }
@@ -19,7 +18,7 @@ class TeacherController
                 require './View/errors/404.php';
             }
             else {               
-                $model = new Teacher();
+                $model = new TeacherLoader();
                 $oneTeacher = $model->readOneTeacher($_GET['id']);
                 if(count($oneTeacher) == 0) {
                     require './View/errors/404.php';
@@ -35,13 +34,15 @@ class TeacherController
                 require './View/errors/404.php';
             }
             else {               
-                $model = new Teacher();
+                $model = new TeacherLoader();
                 $oneTeacher = $model->readOneTeacher($_GET['id']);
+                $student = new StudentLoader();
                 if(count($oneTeacher) == 0) {
                     require './View/errors/404.php';
                 }
                 else {
                     require './View/teacher/single.php';
+
                 }
             }
         }
@@ -51,7 +52,7 @@ class TeacherController
                 require './View/errors/404.php';
             }
             else {
-                $model = new Teacher();
+                $model = new TeacherLoader();
                 $oneTeacher = $model->readOneTeacher($_GET['id']);                
                 if(count($oneTeacher) == 0) {
                     require './View/errors/404.php';
@@ -64,8 +65,14 @@ class TeacherController
         }
 
 
-        require 'View/teacher/index.php';
-
+        else if(!isset($_GET['view']) || $_GET['view'] == 'all') {
+            $model = new TeacherLoader();
+            $teachers = $model->readAllTeacher();
+            require './View/teacher/index.php';
+        }
+        else {
+            require './View/errors/404.php';
+        }
         // code to create a teacher
     }
 
