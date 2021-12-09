@@ -2,6 +2,7 @@
 
 require_once './class/Database.php';
 require_once './Model/ClassroomLoader.php';
+require_once './Model/TeacherLoader.php';
 
 class StudentLoader
 {
@@ -18,7 +19,14 @@ class StudentLoader
     }
 
     public function getStudent($id) {
-        return Database::query("SELECT * FROM student WHERE id=$id");
+        $student = Database::query("SELECT * FROM student WHERE id=$id");
+        $classroomLoader = new ClassroomLoader();
+        $classroom = $classroomLoader->getClassroom($student[0]['classroom_id']);
+        $teacherLoader = new TeacherLoader();
+        $teacher =  $teacherLoader->readOneTeacher($classroom[0]['teacher_id']);
+        $student['classroom'] = $classroom[0];
+        $student['teacher'] = $teacher[0];
+        return $student;
     }
 
     public function search($q) {
