@@ -59,7 +59,7 @@ class StudentController
                 }
                 else {
                     $this->deleteStudent($_GET['id']);
-                    header('Location: student.php');
+                    header('Location: index.php');
                 }
             }
         }
