@@ -43,26 +43,31 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-600 pr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
                 </svg>
-                Teacher: <br>
-                <?php echo $classTeach[0]["firstname"];?>
-                <?php echo $classTeach[0]["lastname"];?>
+                Teacher:
+
+                <a href="./teacher.php?view=teacher&id=<?php echo $classTeach[0]['id']; ?>">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 hover:bg-green-200 text-green-800">
+                    <?php echo $classTeach[0]["firstname"];?>
+                    <?php echo $classTeach[0]["lastname"];?>
+                </span>
+                    </a>
             </p>
             <p class="py-4 text-base flex items-center justify-center lg:justify-start">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-600 pr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                 </svg>
+                Class:  
                 <a href="classroom.php?view=classroom&id=<?php echo $classroom[0]['id']; ?>" class="text-blue-400 hover:text-blue-500 hover:underline">
                     <?php echo $classroom[0]['name']; ?>
                 </a>
             </p>
-
             <div  class="pt-12 pb-8">
-                <a href="./?view=update&id=<?php echo $classroom[0]['id']; ?>">
+                <a href="classroom.php?view=update&id=<?php echo $classroom[0]['id']; ?>">
                     <button class="bg-yellow-600 hover:bg-yellow-800 border border-yellow-900 text-white font-bold py-2 px-8 mx-2 rounded-full">
                         Update
                     </button>
                 </a>
-                <a href="./?view=delete&id=<?php echo $classroom[0]['id']; ?>">
+                <a href="classroom.php?view=delete&id=<?php echo $classroom[0]['id']; ?>">
                     <button class="bg-red-700 hover:bg-red-800 border border-red-900 text-white font-bold py-2 px-8 mx-2 rounded-full">
                         Delete
                     </button>
