@@ -30,8 +30,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-600 pr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
             </svg>
-            <a href="classroom.php?view=classroom&id=1" class="text-blue-400 hover:text-blue-500 hover:underline">
-                Lamarr 2.12
+            <a href="classroom.php?view=classroom&id=<?php echo $oneTeacher['classroom']['id']; ?>" class="text-blue-400 hover:text-blue-500 hover:underline">
+                <?php echo $oneTeacher['classroom']['name']; ?>
             </a>
         </p>
 
@@ -72,7 +72,7 @@
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="my-8 text-right">
-            <a href="student.php?view=create">
+            <a href="index.php?view=create">
             <button class="px-8 h-10 bg-purple-600 hover:bg-purple-700 border border-purple-800 text-white rounded-full">Add</button>
             </a>
         </div>
@@ -105,8 +105,8 @@ Class
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
-<!--                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">-->
-                      <img class="h-10 w-10 rounded-full" src="../../assets/images/default-profile-small.jpg" alt="">
+                   <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                      <!-- <img class="h-10 w-10 rounded-full" src="../../assets/images/default-profile-small.jpg" alt=""> -->
                   </div>
                   <div class="ml-4">
                     <div class="text-sm font-medium text-gray-900">
@@ -126,14 +126,16 @@ Class
                     <?php echo $student['phone']; ?></div>
                 </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    <?php echo $student['classroom']['name']; ?></div>
-                </span>
+                <a href="classroom.php?view=classroom&id=<?php echo $student['classroom']['id']; ?>">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        <?php echo $student['classroom']['name']; ?></div>
+                    </span>
+                </a>
               </td>
 
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 
-                  <a href="student.php?view=update&id=<?php echo $student['id']; ?>">
+                  <a href="index.php?view=update&id=<?php echo $student['id']; ?>">
                       <button class="h-10 text-xm px-3 mx-2 inline-block bg-blue-500 hover:bg-blue-600 border border-blue-700 rounded-full text-white">
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -141,7 +143,7 @@ Class
                       </button>
                   </a>
 
-                  <a href="student.php?view=student&id=<?php echo $student['id']; ?>">
+                  <a href="index.php?view=student&id=<?php echo $student['id']; ?>">
                       <button class="h-10 text-xm px-3 mx-2 inline-block bg-green-500 hover:bg-green-600 border border-green-700 rounded-full text-white">
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -149,7 +151,7 @@ Class
                           </svg>
                       </button>
                   </a>
-                  <a href="student.php?view=delete&id=<?php echo $student['id']; ?>">
+                  <a href="index.php?view=delete&id=<?php echo $student['id']; ?>">
                       <button class="h-10 text-xm px-3 mx-2 inline-block bg-red-700 hover:bg-red-800 border border-red-900 rounded-full text-white">
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -170,7 +172,3 @@ Class
 <?php
     require './View/includes/footer.php';
 ?>
-
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-</svg>

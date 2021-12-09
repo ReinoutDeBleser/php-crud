@@ -7,8 +7,11 @@ class TeacherLoader
 {
     public function readOneTeacher($id){
 
-        $row = Database::query("SELECT * FROM teacher WHERE id=$id");
-        return $row;
+        $teacher = Database::query("SELECT * FROM teacher WHERE id=$id");
+        $classroom = New ClassroomLoader();
+        $room = $classroom->getTeacherFromClassroom($id);
+        $teacher['classroom'] = $room[0];
+        return $teacher;
     }
 
     public function readAllTeacher(){
