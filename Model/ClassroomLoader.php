@@ -1,6 +1,7 @@
 <?php
 
 require_once './class/Database.php';
+require_once './Model/TeacherLoader.php';
 
 class ClassroomLoader
 {
@@ -18,5 +19,4 @@ class ClassroomLoader
     public function getClassroom($id) {
         return Database::query("SELECT * FROM classroom WHERE id='$id'");
     }
-
 }

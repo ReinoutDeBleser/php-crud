@@ -25,13 +25,7 @@ class StudentLoader
     }
 
     public function  getStudentByTeacher($teacher_id){
-        $classroom = Database::query("SELECT * FROM classroom WHERE id=$teacher_id");
-        $students = Database::query('SELECT * FROM  student WHERE classroom_id = ' . $classroom['id']);
-        foreach($students as $key => $student) {
-            $classroom = new ClassroomLoader();
-            $room = $classroom->getClassroom($student['classroom_id']);
-            $students[$key]['classroom'] = $room[0];
-        }
-        return $students;
+        $teacher = Database::query("SELECT * FROM teacher WHERE id=$teacher_id");
+        return Database::query('SELECT * FROM  student WHERE classroom_id = ' . $teacher_id);
     }
 }
