@@ -37,8 +37,12 @@
         }
 
         public function delete($id){
-            $query = 'DELETE FROM teacher WHERE id =' . $id;
-            $delete = Database::query($query);
+            $classroomLoader = new ClassroomLoader();
+            $classroom = $classroomLoader->getTeacherFromClassroom($id);
+            if(count($classroom) == 0) {
+                $query = 'DELETE FROM teacher WHERE id =' . $id;
+                $delete = Database::query($query);
+            }
         }
 
     }
