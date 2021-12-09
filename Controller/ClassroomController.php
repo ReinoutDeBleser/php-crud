@@ -25,7 +25,8 @@ class ClassroomController
                 require './View/errors/404.php';
             } else {
                 $classroom = $this->singleClassroom($_GET['id']);
-
+                $teachers = new TeacherLoader();
+                $allTeachers = $teachers->readAllTeacher();
                 if (count($classroom) == 0) {
                     require './View/errors/404.php';
                 } else {
@@ -122,7 +123,6 @@ class ClassroomController
 
     public function deleteClassroom($id) {
         $classroom = new Classroom($id);
-
         $classroom->delete();
     }
 

@@ -1,30 +1,3 @@
-<?php //require_once './View/includes/header.php';
-//?>
-<!--<div class="w-full max-w-screen-sm mx-auto my-12">-->
-<!--    <div class="w-full h-96 mx-4 my-4 px-6 py-6 border border-gray-300 shadow-xl">-->
-<!--        Class overview:<br>-->
-<!--        --><?php //echo $classroom[0]['name']; ?>
-<!--        --><?php //echo $classroom[0]['location'];?>
-<!--        <br>-->
-<!--        Teacher: <br>-->
-<!--        --><?php //echo $classTeach[0]["firstname"];?>
-<!--        --><?php //echo $classTeach[0]["lastname"];?>
-<!---->
-<!--        <br><br>-->
-<!--        Enrolled students:<br>-->
-<!--        --><?php
-//        foreach($students->getStudentByClassroom($_GET['id']) as $student)
-//        {
-//        echo $student['firstname'];
-//        echo $student['lastname']."<br>";
-//        echo $student['email']."<br>";
-//        echo $student['phone']."<br>"."<br>";
-//        }
-//        ?>
-<!--    </div>-->
-<!--</div>-->
-
-
 <?php require_once './View/includes/header.php'; ?>
 
 <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
@@ -56,7 +29,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-600 pr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                 </svg>
-                Class:  
+                Class:
                 <a href="classroom.php?view=classroom&id=<?php echo $classroom[0]['id']; ?>" class="text-blue-400 hover:text-blue-500 hover:underline">
                     <?php echo $classroom[0]['name']; ?>
                 </a>

@@ -4,7 +4,7 @@ if(isset($_POST) && !empty($_POST['update'])) {
     $id = intval($_GET['id']);
     $classname = $_POST['classname'];
     $location = $_POST['location'];
-    $teacher = $_POST['teacher'];
+    $teacher = $_POST['teacher_id'];
     $data = $classroom-> updateClassroom($id, $classname, $location, $teacher);
     if(isset($data['status']) && $data['status'] == 'error') {
         $errors = $data['errors'];
@@ -50,17 +50,16 @@ if(isset($_POST) && !empty($_POST['update'])) {
                 </span>
             </div>
 
-            <div class="my-4">
-                <label for="teacher" class="<?php if(isset($errors['teacher'])) { echo 'text-red-700'; } else { echo 'text-gray-700'; } ?> text-md font-bold">Teacher</label>
+            <div class="my-y">
+                <label for="teacher" class="<?php if(isset($errors['teacher_id'])) { echo 'text-red-700'; } else { echo 'text-gray-700'; } ?> text-md font-bold">Teacher</label>
                 <select
-                        name="teacher"
+                        name="teacher_id"
                         class="w-full h-12 px-4 mt-2 mb-1 border border-gray-300 outline:none focus:outline-none focus:border-blue-400"
                 >
-                    <option value="1">Tim</option>
-                    <option value="2">Sicco</option>
-                    <option value="3">Charleroi</option>
-                    <option value="4">Brussels</option>
-                    <option value="5">Liège</option>
+                    <?php foreach ($allTeachers as $teacher) { ?>
+                        <option value="<?php echo $teacher['id']; ?>"> <?php echo $teacher['firstname']; ?></option>
+
+                    <?php }?>
                 </select>
                 <span class="font-sm text-red-500">
                     <?php if(isset($errors['teacher'])) { echo $errors['teacher']; } ?>
