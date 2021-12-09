@@ -17,9 +17,12 @@ class TeacherLoader
     public function readAllTeacher(){
         $teachers = Database::query("SELECT * FROM teacher");
         foreach($teachers as $key => $teacher) {
-            $classroom = new ClassroomLoader();
-            $room = $classroom->getTeacherFromClassroom($teacher['id']);
-            $teachers[$key]['classroom'] = $room[0];
+                $classroom = new ClassroomLoader();
+                $room = $classroom->getTeacherFromClassroom($teacher['id']);
+                if(count($room) > 0) {
+                    $teachers[$key]['classroom'] = $room[0];
+                }
+
         }
         return $teachers;
     }
