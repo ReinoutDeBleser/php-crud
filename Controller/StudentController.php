@@ -64,6 +64,16 @@ class StudentController
             }
         }
 
+        else if(isset($_GET['view']) && $_GET['view'] == 'search') {
+            if(!isset($_GET['q'])) {
+                require './View/errors/404.php';
+            }
+            else {
+                $students = $this->searchStudent($_GET['q']);
+                require './View/student/index.php';
+            }
+        }
+
         else if(!isset($_GET['view']) || $_GET['view'] == 'all') {
             $students = $this->allStudent();
             require './View/student/index.php';
@@ -163,5 +173,10 @@ class StudentController
     public function allStudent() {
         $student = new StudentLoader();
         return $student->getAllStudent();
+    }
+
+    public function searchStudent($q) {
+        $student = new StudentLoader();
+        return $student->search($q);
     }
 }
