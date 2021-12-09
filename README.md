@@ -51,7 +51,7 @@ divide the CRUD in 3:
 We have to provide the following pages for Students, Teacher & Class.
 
 - A general overview of all records of that entity in a table
-    * Each row should have a button to edit or delete the entity
+  * Each row should have a button to edit or delete the entity
     * This page should have a "create new" button
 - A detailed overview of the selected entity
     * This should include a button to delete this entity

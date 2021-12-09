@@ -10,6 +10,24 @@
 <body>
 
 <div class="w-full h-20 bg-gray-50 shadow-lg">
+    <div class="w-full max-w-screen-xl h-20 mx-auto flex justify-between">
 
+        <div class="">
+
+        </div>
+
+        <div class="self-center">
+            <a href="./" class="text-gray-800 py-2 px-4 text-xl font-light px-4 hover:text-gray-600 border border-gray-50 hover:border-gray-300 hover:bg-gray-100 hover:shadow-sm transition duration-300 ease-in-out active:text-blue-400">
+                Students
+            </a>
+            <a href="./teacher.php" class="text-gray-800 py-2 px-4 text-xl font-light px-4 hover:text-gray-600 border border-gray-50 hover:border-gray-300 hover:bg-gray-100 hover:shadow-sm transition duration-300 ease-in-out active:text-blue-400">
+                Teachers
+            </a>
+            <a href="./classroom.php" class="text-gray-800 py-2 px-4 text-xl font-light px-4 hover:text-gray-600 border border-gray-50 hover:border-gray-300 hover:bg-gray-100 hover:shadow-sm transition duration-300 ease-in-out active:text-blue-400">
+                Classrooms
+            </a>
+        </div>
+
+    </div>
 </div>
 

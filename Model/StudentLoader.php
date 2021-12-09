@@ -7,7 +7,6 @@ class StudentLoader
 {
     public function getAllStudent() {
         $students = Database::query("SELECT * FROM student");
-
         foreach($students as $key => $student) {
             $classroom = new ClassroomLoader();
             $room = $classroom->getClassroom($student['classroom_id']);
@@ -23,5 +22,10 @@ class StudentLoader
 
     public function  getStudentByClassroom($classroom_id){
         return Database::query('SELECT * FROM student WHERE classroom_id = ' . $classroom_id);
+    }
+
+    public function  getStudentByTeacher($teacher_id){
+        $teacher = Database::query("SELECT * FROM teacher WHERE id=$id");
+        return Database::query('SELECT * FROM  student WHERE classroom_id = ' . $classroom_id);
     }
 }
