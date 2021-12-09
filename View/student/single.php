@@ -29,8 +29,17 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gray-600 pr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                     </svg>
-                    <a href="classroom.php?view=classroom&id=1" class="text-blue-400 hover:text-blue-500 hover:underline">
-                        Lamarr 2.12
+                    <a href="classroom.php?view=classroom&id=<?php echo $student['classroom']['id']; ?>" class="text-blue-400 hover:text-blue-500 hover:underline">
+                        <?php echo $student['classroom']['name']; ?>
+                    </a>
+                </p>
+
+                <p class="py-4 text-base flex items-center justify-center lg:justify-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-gsray-600 pr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                    </svg>
+                    <a href="teacher.php?view=teacher&id=<?php echo $student['teacher']['id']; ?>" class="text-blue-400 hover:text-blue-500 hover:underline">
+                        <?php echo $student['teacher']['firstname']; ?> <?php echo $student['teacher']['lastname']; ?>
                     </a>
                 </p>
 
@@ -59,7 +68,3 @@
     </div>
 
 <?php require_once './View/includes/footer.php'; ?>
-
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-</svg>

@@ -6,7 +6,7 @@
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="my-8 flex justify-between h-20">
             <h1 class="self-center text-2xl text-gray-900 font-light">
-                <?php if(isset($_GET['q'])) { echo "Search result for <b>" . $_GET['q'] . "</b>"; } else { echo "All Students"; } ?>
+              <?php if(isset($_GET['q'])) { echo "Search result for <b>" . $_GET['q'] . "</b>"; } else { echo "All Students"; } ?>
 
             </h1>
             <form class="self-center" method="get" action="">
