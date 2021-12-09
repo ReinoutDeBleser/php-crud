@@ -42,7 +42,6 @@ class TeacherController
                 }
                 else {
                     require './View/teacher/single.php';
-
                 }
             }
         }

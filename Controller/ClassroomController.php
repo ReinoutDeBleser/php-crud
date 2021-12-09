@@ -38,7 +38,6 @@ class ClassroomController
                 require './View/errors/404.php';
             } else {
                 $classroom = $this->singleClassroom($_GET['id']);
-
                 if (count($classroom) == 0) {
                     require './View/errors/404.php';
                 } else {

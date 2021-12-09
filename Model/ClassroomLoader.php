@@ -18,5 +18,4 @@ class ClassroomLoader
     public function getClassroom($id) {
         return Database::query("SELECT * FROM classroom WHERE id='$id'");
     }
-
 }
