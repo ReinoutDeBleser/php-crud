@@ -25,7 +25,7 @@ class StudentLoader
     }
 
     public function  getStudentByTeacher($teacher_id){
-        $teacher = Database::query("SELECT * FROM teacher WHERE id=$id");
-        return Database::query('SELECT * FROM  student WHERE classroom_id = ' . $classroom_id);
+        $teacher = Database::query("SELECT * FROM teacher WHERE id=$teacher_id");
+        return Database::query('SELECT * FROM  student WHERE classroom_id = ' . $teacher_id);
     }
 }
