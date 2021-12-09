@@ -19,13 +19,28 @@ class StudentLoader
         return Database::query("SELECT * FROM student WHERE id=$id");
     }
 
+    public function search($q) {
+        $students= Database::query("SELECT * FROM student WHERE firstname LIKE '%$q%' OR lastname LIKE '%$q%' OR email LIKE '%$q%'");
+        foreach($students as $key => $student) {
+            $classroom = new ClassroomLoader();
+            $room = $classroom->getClassroom($student['classroom_id']);
+            $students[$key]['classroom'] = $room[0];
+        }
+        return $students;
+    }
 
     public function  getStudentByClassroom($classroom_id){
         return Database::query('SELECT * FROM student WHERE classroom_id = ' . $classroom_id);
     }
 
     public function  getStudentByTeacher($teacher_id){
-        $teacher = Database::query("SELECT * FROM teacher WHERE id=$teacher_id");
-        return Database::query('SELECT * FROM  student WHERE classroom_id = ' . $teacher_id);
+        $classroom = Database::query("SELECT * FROM classroom WHERE teacher_id=$teacher_id");
+        $students =  Database::query('SELECT * FROM  student WHERE classroom_id = ' . $classroom[0]['id']);
+        foreach($students as $key => $student) {
+            $classroom = new ClassroomLoader();
+            $room = $classroom->getClassroom($student['classroom_id']);
+            $students[$key]['classroom'] = $room[0];
+        }
+        return $students;
     }
 }

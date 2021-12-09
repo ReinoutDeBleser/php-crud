@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 <?php require_once './View/includes/header.php'; ?>
 
@@ -8,16 +5,20 @@
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="my-8 flex justify-between h-20">
-            <h1 class="self-center text-2xl text-gray-900 font-light">All Students</h1>
-            <form class="self-center" action="">
-                <input type="text"
-                       class="px-6 h-10 border border-gray-300 w-40 md:w-72 outline:none focus-outline-none focus:border-blue-400"
-                       placeholder="search"
-                       name="student_search_input"
+            <h1 class="self-center text-2xl text-gray-900 font-light">
+                <?php if(isset($_GET['q'])) { echo "Search result for <b>" . $_GET['q'] . "</b>"; } else { echo "All Students"; } ?>
 
+            </h1>
+            <form class="self-center" method="get" action="">
+                <input type="hidden" name="view" value="search">
+                <input type="text"
+                       class="px-6 h-10 border border-gray-300 w-40 md:w-72 outline:none focus:outline-none focus:border-purple-600"
+                       placeholder="search"
+                       name="q"
+                       value="<?php if(isset($_GET['q'])) { echo $_GET['q']; } ?>"
                 >
                 <input
-                        type="submit" name="student_search_btn"
+                        type="submit"
                         class="h-10 px-4 bg-purple-600 hover:bg-purple-700 text-white border border-purple 800 cursor-pointer"
                 >
             </form>
