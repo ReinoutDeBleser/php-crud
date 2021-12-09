@@ -19,4 +19,8 @@ class ClassroomLoader
     public function getClassroom($id) {
         return Database::query("SELECT * FROM classroom WHERE id='$id'");
     }
+
+    public function getTeacherFromClassroom($id) {
+        return Database::query("SELECT * FROM classroom WHERE teacher_id='$id'");
+    }
 }

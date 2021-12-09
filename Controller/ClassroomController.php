@@ -122,6 +122,7 @@ class ClassroomController
 
     public function deleteClassroom($id) {
         $classroom = new Classroom($id);
+
         $classroom->delete();
     }
 
