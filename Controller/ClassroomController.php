@@ -33,13 +33,14 @@ class ClassroomController
                 }
             }
         }
-
         else if (isset($_GET['view']) && $_GET['view'] == 'classroom') {
             if (!isset($_GET['id'])) {
                 require './View/errors/404.php';
             } else {
                 $classroom = $this->singleClassroom($_GET['id']);
                 $students = new StudentLoader();
+                $classTeacher = new TeacherLoader();
+                $classTeach = $classTeacher->readTeacherByClassroom($_GET['id']);
                 if (count($classroom) == 0) {
                     require './View/errors/404.php';
                 } else {
