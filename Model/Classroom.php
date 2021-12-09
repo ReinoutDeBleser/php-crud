@@ -1,6 +1,7 @@
 <?php
 
 require_once './class/Database.php';
+require_once './Model/Student.php';
 
 class Classroom
 {
@@ -41,5 +42,7 @@ class Classroom
     public function delete() {
         $query = "DELETE FROM classroom WHERE id = $this->id";
         $delete = Database::query($query);
+        $students = new Student();
+        $students->removeClassroomFromStudent($this->id);
     }
 }

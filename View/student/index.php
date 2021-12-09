@@ -76,11 +76,18 @@ Class
                     <?php echo $student['phone']; ?></div>
                 </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <a href="./classroom.php?view=classroom&id=<?php echo $student['classroom']['id']; ?>">
+                  <?php  if ($student['classroom_id'] != null) {  ?>
+
+                  <a href="./classroom.php?view=classroom&id=<?php echo $student['classroom']['id']; ?>">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 hover:bg-green-200 text-green-800">
                     <?php echo $student['classroom']['name']; ?>
                 </span>
-                </a>
+                </a> <?php } else  {?>
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full text-green-800">
+                    No Class Assigned
+                  </span>
+
+                  <?php }?>
               </td>
 
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
