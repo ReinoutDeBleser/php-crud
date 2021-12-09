@@ -29,7 +29,7 @@ class StudentLoader
         return $students;
     }
 
-    public function  getStudentByClassroom($classroom_id){
+    public function getStudentByClassroom($classroom_id){
         return Database::query('SELECT * FROM student WHERE classroom_id = ' . $classroom_id);
     }
 
