@@ -6,6 +6,7 @@ require_once './class/Database.php';
 require_once 'Model/Classroom.php';
 require_once 'Model/ClassroomLoader.php';
 require_once 'Model/TeacherLoader.php';
+require_once 'Model/StudentLoader.php';
 
 class ClassroomController
 {
@@ -38,6 +39,7 @@ class ClassroomController
                 require './View/errors/404.php';
             } else {
                 $classroom = $this->singleClassroom($_GET['id']);
+                $students = new StudentLoader();
                 if (count($classroom) == 0) {
                     require './View/errors/404.php';
                 } else {

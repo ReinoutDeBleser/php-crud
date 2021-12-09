@@ -14,7 +14,7 @@ require_once './Model/StudentLoader.php'
         <br><br>
         Enrolled students:<br>
         <?php
-        foreach ($students as $student)
+        foreach($students->getStudentByClassroom($_GET['id']) as $student)
         {
 
         echo $student['firstname']; echo $student['lastname'];
