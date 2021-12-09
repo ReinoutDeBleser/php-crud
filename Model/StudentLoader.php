@@ -8,9 +8,11 @@ class StudentLoader
     public function getAllStudent() {
         $students = Database::query("SELECT * FROM student");
         foreach($students as $key => $student) {
+            if ($student['classroom_id'] != null) {
             $classroom = new ClassroomLoader();
             $room = $classroom->getClassroom($student['classroom_id']);
             $students[$key]['classroom'] = $room[0];
+            }
         }
         return $students;
     }

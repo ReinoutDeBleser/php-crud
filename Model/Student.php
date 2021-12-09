@@ -43,5 +43,9 @@ class Student
         $delete = Database::query($query);
         return 'success';
     }
+    public function removeClassroomFromStudent($classroom_id) {
+        $queryBye = "UPDATE student SET classroom_id=null WHERE classroom_id = $classroom_id";
+        Database::query($queryBye);
+    }
 
 }
